@@ -1,72 +1,76 @@
-# React con el bundle rollup.js en Typescript
+# React with the rollup.js bundle in Typescript
 
-## Iniciar npm package
+## [rollupjs.org](https://rollupjs.org/)
+
+## Initialize npm package
 
 ```js
 npm init -y
 ```
 
-## Instalar dependencias
+## Install dependencies
 
 ```js
 npm i --save-dev rollup @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript
 ```
 
-## Istalar plugins de rollup.js
+## Install rollup.js plugins
 
-[Plugins rollup.js](https://github.com/rollup/plugins)
+[Rollup.js Plugins](https://github.com/rollup/plugins)
 
 ```js
 npm i --save-dev @rollup/plugin-babel @rollup/plugin-commonjs @rollup/plugin-node-resolve @rollup/plugin-replace @rollup/plugin-typescript
 ```
 
-## Instalar React types
+## Install React types
 
 ```js
 npm i --save-dev @types/react @types/react-dom
 ```
 
-## Instalar React
+## Install React
 
 ```js
 npm i react react-dom
 ```
 
-## Iniciar la configuración de typescript:
+## Start TypeScript configuration:
 
 ```js
 npx tsc --init
 ```
 
-Revisar tsconfig.json y establecer la configuración
+Check tsconfig.json and set up the configuration.
 
-## Instalar ESlint
+## Install ESlint
 
 ```js
 npx eslint --init
 ```
 
+```js
 √ How would you like to use ESLint? · style
 √ What type of modules does your project use? · esm
 √ Which framework does your project use? · react
 √ Does your project use TypeScript? · Yes
-√ Where does your code run? · browser, node **(seleccionar node y presionar a para dejar ambos seleccionados)**
+√ Where does your code run? · browser, node **(select node and press 'a' to keep both selected)**
 √ How would you like to define a style for your project? · prompt
 √ What format do you want your config file to be in? · JavaScript
 √ What style of indentation do you use? · 4
 √ What quotes do you use for strings? · single
-√ What line endings do you use? · unix **(o win32 si estas en windows)**
+√ What line endings do you use? · unix **(or win32 if you're on Windows)**
 √ Do you require semicolons? » Yes
 √ Would you like to install them now? · Yes
 √ Which package manager do you want to use? · npm
+```
 
-## Instalar Prettier
+## Install Prettier
 
 ```js
 npm i --save-dev --save-exact prettier
 ```
 
-### Configurar prettier:
+### Configure prettier:
 
 ```js
 {
@@ -79,32 +83,44 @@ npm i --save-dev --save-exact prettier
 }
 ```
 
-## Configuraciones
+## Configurations
 
-Crear carpeta config (para configuraciones js)
+Create a _config_ folder (for js configurations).
 
-Crear archivo _config\globalConfig.js_ y agregar las exportaciones de las constantes
+Create the _config\globalConfig.js_ file and add the constants exports.
 
-Crear archivo _config\rollup.config.js_ y generar las configuraciones de los plugins
+Create the _config\rollup.config.js_ file and set up the plugins configurations.
 
-Crear archivo _config\rollup.prod.config.js_ generar las configuraciones de los plugins para producción
+Create the _config\rollup.prod.config.js_ file and set up the plugins configurations for production.
 
-Agregar el script build en package.json:
+Add the build script in package.json:
 
 ```js
 "build": "rollup --bundleConfigAsCjs --config ./config/rollup.prod.config.js"
 ```
 
-## Instalar y configurar live reload, dev y html plugin
+## Install and configure live reload, dev, and html plugin
+
+### [Awesome Plugins](https://github.com/rollup/awesome)
 
 ```js
 npm i --save-dev @rollup/plugin-html rollup-plugin-livereload rollup-plugin-dev
 ```
 
-Crear archivo _config\rollup.dev.config.js_ generar las configuraciones de los plugins para desarrollo
+Create the _config\rollup.dev.config.js_ file and set up the plugins configurations for development.
 
-Crear _src\index.dev.html_ como template (ver codigo)
+Create _src\index.dev.html_ as a template (see code).
 
-Crear _config\htmlTemplate.js_ para importar el template y reemplazar el ${script}
+Create _config\htmlTemplate.js_ to import the template and replace the _${script}_.
 
-Finalizar devPlugins de _config\rollup.dev.config.js_
+Finish the devPlugins in _config\rollup.dev.config.js_.
+
+Add the build script in package.json:
+
+```js
+"build:dev": "rollup --bundleConfigAsCjs --config ./config/rollup.dev.config.js --w"
+```
+
+```js
+npm run build:dev
+```

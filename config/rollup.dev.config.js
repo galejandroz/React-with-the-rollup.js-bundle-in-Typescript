@@ -24,7 +24,7 @@ devPlugins.push(
 
 devPlugins.push(
     livereload({
-        watch: 'dist',
+        watch: 'build',
     })
 );
 
